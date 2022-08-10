@@ -235,6 +235,7 @@
                                     <include>**/*.json</include>
                                     <include>**/img/*</include>
                                     <include>**/*.less</include>
+                                    <include>**/*.svg</include>
                                 </includes>
                                 <excludes>
                                     <exclude>node_modules/*</exclude>
@@ -309,7 +310,8 @@
                         <encoding>UTF-8</encoding>
                         <resources>
                             <resource>
-                                <directory>${basedir}/../MapStore2/java/printing/resources/geoserver/print</directory>
+                                <!-- <directory>${basedir}/../MapStore2/java/printing/resources/geoserver/print</directory> -->
+                                <directory>${basedir}/../printing</directory>
                                 <includes>
                                     <include>*</include>
                                 </includes>
