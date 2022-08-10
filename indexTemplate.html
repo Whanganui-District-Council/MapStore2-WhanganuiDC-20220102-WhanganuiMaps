@@ -5,6 +5,8 @@
       <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
       <title>WhanganuiMaps - MapStore2</title>
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
       <style>
       body {
         margin: 0;
@@ -104,6 +106,16 @@
             if (!isValidBrowser) {
                 window.location.href = "unsupportedBrowser.html"
                 document.querySelector("container").style.display = "none";
+            }
+            if ("onhashchange" in window) {
+                window.onhashchange = function () {
+                    if (window.location.hash == '#/viewer/openlayers/313') {
+                      window.location = 'https://eplan.whanganui.govt.nz/eplan/';
+                    }
+                }
+            }
+            if (window.location.hash == '#/viewer/openlayers/313') {
+              window.location = 'https://eplan.whanganui.govt.nz/eplan/';
             }
         </script>
   </head>
