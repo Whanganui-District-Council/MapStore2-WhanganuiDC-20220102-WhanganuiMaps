@@ -1,0 +1,22 @@
+[
+  {"name": "triangle", "label": "Triangle"},
+  {"name": "square", "label": "Square"},
+  {"name": "diamond", "label": "Diamond"},
+  {"name": "circle", "label": "Circle"},
+  {"name": "star", "label": "Star"},
+  {"name": "drawing-pin", "label": "Drawing Pin"},
+  {"name": "arrow-north", "label": "Arrow North"},
+  {"name": "arrow-north-east", "label": "Arrow North East"},
+  {"name": "arrow-east", "label": "Arrow East"},
+  {"name": "arrow-south-east", "label": "Arrow South East"},
+  {"name": "arrow-south", "label": "Arrow South"},
+  {"name": "arrow-south-west", "label": "Arrow South West"},
+  {"name": "arrow-west", "label": "Arrow West"},
+  {"name": "arrow-north-west", "label": "Arrow North West"},
+  {"name": "map-pin-marked", "label": "Map Pin Marked"},
+  {"name": "traffic-cone", "label": "Traffic Cone"},
+  {"name": "nz_pw53", "label": "NZ PW53 Sign"},
+  {"name": "nz_pw53_temporary", "label": "NZ PW53 Temporary Sign"},
+  {"name": "nz_r3_6_road_closed", "label": "NZ R3 Road Closed Sign"},
+  {"name": "flooding", "label": "Flooding"}
+]
