@@ -1,0 +1,14 @@
+{
+    "locale": "en-US",
+    "messages": {
+        "longitude": "Lon (Y)",
+        "latitude": "Lat (X)",
+        "home": {
+            "shortDescription": "Welcome to the Whanganui District Council portal for<br/>viewing interactive geospatial Maps, Dashboards and GeoStories.",
+            "footerDescription": "<div class='col-xs-12 col-m-7 mb-3'><div><a class='link-light' href='https://www.whanganui.govt.nz/Site-Information/Copyright' target='_self'>Copyright</a>&nbsp;| <a class='link-light' href='https://www.whanganui.govt.nz/Site-Information/Privacy-Statement' target='_self'>Privacy Statement</a>&nbsp;| <a class='link-light' href='https://www.whanganui.govt.nz/Site-Information/Disclaimer' target='_self'>Disclaimer</a>&nbsp;| <a class='link-light' href='https://www.whanganui.govt.nz/Site-Information/Terms-of-Trade' target='_self'>Terms of Trade</a></div></div><div class='col-xs-12 col-m-5 powered-by'><div class='right'>© Whanganui District Council&nbsp;|&nbsp;<span class='powered-by'>Powered by <a href='https://www.geosolutionsgroup.com/technologies/mapstore/' target='_blank' aria-describedby='new-window-0' class='opens-in-new-tab link-light'>MapStore</a></span></div></div>"
+        },
+        "maps": {
+            "search": "Search for Maps, Dashboards or Geostories..."
+        }
+    }
+}
