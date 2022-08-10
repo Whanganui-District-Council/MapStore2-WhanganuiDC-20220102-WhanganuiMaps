@@ -1,0 +1,39 @@
+#identify-container > .ms-side-panel > div {
+  top: 50px !important;
+  height: 90% !important;
+}
+#mapstore-burger-menu > div > .dropdown-menu {
+  z-index: 2040 !important;
+}
+.ms-annotations-panel.react-dock-no-resize.ms-absolute-dock.ms-side-panel > div {
+  top: 50px !important;
+  height: 90% !important;
+}
+#mapstore-navbar-container {
+  z-index: 2050 !important;
+}
+#DRAGDROP_IMPORT_ZONE {
+  z-index: 3000 !important;
+}
+#viewer > .export-panel {
+  z-index: 3000 !important;
+}
+#catalog-root > .ms-side-panel.ms-absolute-dock.react-dock-no-resize > div {
+  top: 50px !important;
+  height: 90% !important;
+}
+.ms-side-panel.ms-absolute-dock.react-dock-no-resize.map-catalog-dock-panel > div {
+  top: 50px !important;
+  height: 90% !important;
+}
+.page-maps .MapSearchBar.maps-search {
+  padding-left:0px !important;
+  padding-right:0px !important;
+}
+#mapstore-print-panel {
+  touch-action: none !important;
+  z-index: 2990 !important;
+  left: 1% !important;
+  top: 50px !important;
+  transform: none !important;
+}
