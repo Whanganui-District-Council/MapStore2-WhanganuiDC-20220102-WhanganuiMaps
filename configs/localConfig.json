@@ -1,0 +1,1204 @@
+{
+  "proxyUrl": {
+    "url": "proxy/?url=",
+    "useCORS": [
+      "https://eplan.whanganui.govt.nz",
+      "https://whanganui.isoplan.co.nz/",
+      "https://data.whanganui.govt.nz",
+      "https://data.whanganui.govt.nz/geoserver",
+      "https://maps.whanganui.govt.nz",
+      "https://mapstore.whanganui.govt.nz",
+      "https://nominatim.openstreetmap.org",
+      "https://wpc-18425.local.wanganui.govt.nz"
+    ]
+  },
+  "geoStoreUrl": "rest/geostore/",
+  "printUrl": "pdf/info.json",
+  "bingApiKey": "AhuXBu7ipR1gNbBfXhtUAyCZ6rkC5PkWpxs2MnMRZ1ZupxQfivjLCch22ozKSCAn",
+  "mapquestApiKey": "__API_KEY_MAPQUEST__",
+  "mapboxAccessToken": "__ACCESS_TOKEN_MAPBOX__",
+  "//": " list of actions types that are available to be launched dynamically from query param (#3817)",
+  "initialActionsWhiteList": [
+    "ZOOM_TO_EXTENT",
+    "ZOOM_TO_POINT",
+    "ADD_LAYER",
+    "SEARCH:SEARCH_WITH_FILTER",
+    "UPDATE_CENTER_TO_MARKER",
+    "CLICK_ON_MAP",
+    "SHOW_MAPINFO_MARKER"
+  ],
+  "initialMapFilter": "",
+  "ignoreMobileCss": false,
+  "useAuthenticationRules": true,
+  "loadAfterTheme": true,
+  "themePrefix": "MapStore2-WhanganuiDC",
+  "defaultMapOptions": {
+    "cesium": {
+      "flyTo": true,
+      "navigationTools": true,
+      "terrainProvider": {
+        "type": "ellipsoid"
+      }
+    }
+  },
+  "floatingIdentifyDelay": 1000,
+  "localizedLayerStyles": {
+    "name": "mapstore_language"
+  },
+  "authenticationRules": [{
+      "urlPattern": ".*geostore.*",
+      "method": "bearer"
+    }, {
+      "urlPattern": ".*rest/config.*",
+      "method": "bearer"
+    }, {
+      "urlPattern": "http(s)?\\:\\/\\/gs-stable\\.geo-solutions\\.it(\\:443|\\:80)?\\/geoserver/.*",
+      "authkeyParamName": "authkey-qa",
+      "method": "authkey"
+    }
+  ],
+  "monitorState": [{
+      "name": "router",
+      "path": "router.location.pathname"
+    }, {
+      "name": "browser",
+      "path": "browser"
+    }, {
+      "name": "geostorymode",
+      "path": "geostory.mode"
+    }, {
+      "name": "featuregridmode",
+      "path": "featuregrid.mode"
+    }, {
+      "name": "userrole",
+      "path": "security.user.role"
+
+    }, {
+      "name": "printEnabled",
+      "path": "print.capabilities"
+    }
+  ],
+  "userSessions": {
+    "enabled": true
+  },
+  "projectionDefs": [{
+      "code": "EPSG:2193",
+      "def": "+proj=tmerc +lat_0=0 +lon_0=173 +k=0.9996 +x_0=1600000 +y_0=10000000 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs",
+      "extent": [
+        827933.23,
+        3729820.29,
+        3195373.59,
+        7039943.58
+      ],
+      "worldExtent": [
+        166.315719,
+        -47.534529,
+        178.610868,
+        -34.030252
+      ]
+    }, {
+      "code": "EPSG:27200",
+      "def": "+proj=nzmg +lat_0=-41 +lon_0=173 +x_0=2510000 +y_0=6023150 +ellps=intl +towgs84=59.47,-5.04,187.44,0.47,-0.1,1.024,-4.5993 +units=m +no_defs",
+      "extent": [
+        6148693.527138534,
+        2693703.458518185,
+        2670455.255393185,
+        6132865.558388534
+      ],
+      "worldExtent": [
+        166.37,
+        -47.33,
+        178.63,
+        -34.1
+      ]
+    }, {
+      "code": "EPSG:4167",
+      "def": "+proj=longlat +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +no_defs",
+      "extent": [
+        -170.89,
+        -55.95,
+        157.41,
+        -22.74
+      ],
+      "worldExtent": [
+        -170.89,
+        -55.95,
+        157.41,
+        -22.74
+      ]
+    }
+  ],
+  "initialState": {
+    "defaultState": {
+      "annotations": {
+        "config": {
+          "multiGeometry": true,
+          "validationErrors": {}
+        },
+
+        "defaultTextAnnotation": "New"
+      },
+      "mapInfo": {
+        "showCoordinateEditor": true,
+        "enabled": true,
+        "highlight": true,
+        "highlightStyle": {
+          "color": "#ff0000",
+          "weight": 4,
+          "radius": 4,
+          "dashArray": "",
+          "fillColor": "#ffffff",
+          "fillOpacity": 0
+        },
+        "configuration": {
+          "infoFormat": "text/html",
+          "maxItems": 500
+        }
+      },
+
+      "maptype": {
+        "mapType": "{context.mode === 'desktop' ? 'openlayers' : 'leaflet'}"
+      },
+      "catalog": {
+        "default": {
+          "newService": {
+            "url": "",
+            "type": "wms",
+            "title": "",
+            "isNew": true,
+            "autoload": false
+          },
+          "selectedService": "Whanganui DC WMS",
+          "services": {
+            "Whanganui DC WMS": {
+              "url": "https://data.whanganui.govt.nz/geoserver/wms",
+              "type": "wms",
+              "title": "Whanganui DC WMS",
+              "autoload": true
+            }
+          },
+          "staticServices": {
+            "default_map_backgrounds": {
+              "type": "backgrounds",
+              "title": "Default Backgrounds",
+              "titleMsgId": "defaultMapBackgroundsServiceTitle",
+              "autoload": true,
+              "backgrounds": [{
+                  "type": "osm",
+                  "title": "Open Street Map",
+                  "name": "mapnik",
+                  "source": "osm",
+                  "group": "background"
+                }, {
+                  "type": "tileprovider",
+                  "title": "NASAGIBS Night 2012",
+                  "provider": "NASAGIBS.ViirsEarthAtNight2012",
+                  "name": "Night2012",
+                  "source": "nasagibs",
+                  "group": "background"
+                }, {
+                  "type": "tileprovider",
+                  "title": "OpenTopoMap",
+                  "provider": "OpenTopoMap",
+                  "name": "OpenTopoMap",
+                  "source": "OpenTopoMap",
+                  "group": "background"
+                }, {
+                  "format": "image/jpeg",
+                  "group": "background",
+                  "name": "s2cloudless:s2cloudless",
+                  "opacity": 1,
+                  "title": "Sentinel 2 Cloudless",
+                  "type": "wms",
+                  "url": "https://1maps.geo-solutions.it/geoserver/wms",
+                  "source": "s2cloudless",
+                  "singleTile": false
+                }, {
+                  "source": "ol",
+                  "group": "background",
+                  "title": "Empty Background",
+                  "fixed": true,
+                  "type": "empty"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "locales": {
+        "supportedLocales": {
+          "it": {
+            "code": "it-IT",
+            "description": "Italiano"
+          },
+          "en": {
+            "code": "en-US",
+            "description": "English"
+          },
+          "fr": {
+            "code": "fr-FR",
+            "description": "Français"
+          },
+          "de": {
+            "code": "de-DE",
+            "description": "Deutsch"
+          },
+          "es": {
+            "code": "es-ES",
+            "description": "Español"
+          }
+        }
+      }
+    }
+  },
+  "plugins": {
+    "mobile": [{
+        "name": "Map",
+        "cfg": {
+          "mapOptions": {
+            "openlayers": {
+              "interactions": {
+                "pinchRotate": false,
+                "altShiftDragRotate": false
+              }
+            }
+          }
+        }
+      },
+      "Version",
+      "DrawerMenu", {
+        "name": "BackgroundSelector",
+        "cfg": {
+          "bottom": 25,
+          "dimensions": {
+            "side": 65,
+            "sidePreview": 65,
+            "frame": 3,
+            "margin": 5,
+            "label": false,
+            "vertical": true
+          }
+        }
+      }, {
+        "name": "Identify",
+        "showIn": [
+          "Settings"
+        ],
+        "cfg": {
+          "showFullscreen": true,
+          "position": "bottom",
+          "disableInfoAlert": true,
+          "disableCoordinatesRow": true,
+          "size": 0.5,
+          "fluid": true,
+          "viewerOptions": {
+            "container": "{context.ReactSwipe}"
+          },
+          "style": {
+            "color": "#ff0000",
+            "weight": 4,
+            "radius": 4,
+            "dashArray": "",
+            "fillColor": "#ffffff",
+            "fillOpacity": 0
+          }
+        }
+      }, {
+        "name": "Locate",
+        "override": {
+          "Toolbar": {
+            "alwaysVisible": true
+          }
+        }
+      },
+      "Home", {
+        "name": "TOC",
+        "cfg": {
+          "activateMetedataTool": false,
+          "activateMapTitle": false,
+          "activateSortLayer": false,
+          "activateLayerFilterTool": false,
+          "activateQueryTool": false
+        }
+      }, {
+        "name": "TOCItemsSettings",
+        "cfg": {
+          "width": 300
+        }
+      }, {
+        "name": "Tutorial",
+        "cfg": {
+          "preset": "default_mobile_tutorial"
+        }
+      }, {
+        "name": "Settings",
+        "cfg": {
+          "wrap": true
+        }
+      }, {
+        "name": "Search",
+        "cfg": {
+          "showOptions": false,
+          "withToggle": [
+            "max-width: 768px",
+            "min-width: 768px"
+          ],
+          "resultsStyle": {
+            "iconUrl": "https://data.whanganui.govt.nz/wdc/images/blank.png",
+            "shadowUrl": "https://data.whanganui.govt.nz/wdc/images/blank.png",
+            "iconSize": [0, 0],
+            "iconAnchor": [0, 0],
+            "popupAnchor": [0, 0],
+            "shadowSize": [0, 0],
+            "color": "rgba(255, 255, 255, 0)",
+            "weight": 1,
+            "dashArray": "",
+            "fillColor": "rgba(255, 255, 255, 0)",
+            "fillOpacity": 0.1
+          }
+        }
+      }, {
+        "name": "Toolbar",
+        "id": "NavigationBar",
+        "cfg": {
+          "id": "navigationBar"
+        }
+      },
+      "ZoomAll", {
+        "name": "MapLoading",
+        "override": {
+          "Toolbar": {
+            "alwaysVisible": true
+          }
+        }
+      }, {
+        "name": "FullScreen",
+        "override": {
+          "Toolbar": {
+            "alwaysVisible": false
+          }
+        }
+      },
+      "OmniBar",
+      "BurgerMenu",
+      "Expander", {
+        "name": "Cookie",
+        "cfg": {
+          "externalCookieUrl": "",
+          "declineUrl": "https://maps.whanganui.govt.nz"
+        }
+      },
+
+      "FeedbackMask"
+    ],
+    "desktop": [
+      "Details", {
+        "name": "Map",
+        "cfg": {
+          "additionalLayers": [{
+              "type": "wms",
+              "url": "https://data.whanganui.govt.nz/geoserver/wms",
+              "title": "elevation",
+              "name": "geonode:whanganui_8m_dem_2012_3857_16",
+              "format": "application/bil16",
+              "nodata": -9999,
+              "visibility": true,
+              "useForElevation": true
+            }
+          ],
+          "mapOptions": {
+            "openlayers": {
+              "interactions": {
+                "pinchRotate": false,
+                "altShiftDragRotate": false
+              },
+              "attribution": {
+                "container": "#footer-attribution-container"
+              }
+            },
+            "leaflet": {
+              "attribution": {
+                "container": "#footer-attribution-container"
+              }
+            }
+          },
+          "toolsOptions": {
+            "scalebar": {
+              "container": "#footer-scalebar-container"
+            }
+          }
+        }
+      },
+      "AutoMapUpdate",
+      "MapCatalog",
+      "HelpLink", {
+        "name": "DrawerMenu",
+        "cfg": {
+          "menuOptions": {
+            "resizable": true,
+            "width": 400
+          }
+        }
+      },
+      "Version",
+      "Notifications",
+      "BackgroundSelector",
+      "Swipe", {
+        "name": "Annotations",
+        "cfg": {
+          "measurementAnnotationEdit": false
+        }
+      }, {
+        "name": "Share",
+        "cfg": {
+          "advancedSettings": {
+            "bbox": true,
+            "centerAndZoom": true
+          }
+        }
+      }, {
+        "name": "Identify",
+        "cfg": {
+          "showHighlightFeatureButton": true,
+          "draggable": false,
+          "dock": true,
+          "viewerOptions": {
+            "container": "{context.ReactSwipe}"
+          },
+          "maxItems": 500,
+          "showEdit": true,
+          "style": {
+            "color": "#ff0000",
+            "weight": 4,
+            "radius": 4,
+            "dashArray": "",
+            "fillColor": "#ffffff",
+            "fillOpacity": 0
+          }
+        },
+        "override": {
+          "Toolbar": {
+            "position": 11
+          }
+        }
+      }, {
+        "name": "Locate",
+        "override": {
+          "Toolbar": {
+            "alwaysVisible": true
+          }
+        }
+      },
+      "Home", {
+        "name": "FeatureEditor",
+        "cfg": {
+          "editingAllowedRoles": ["ADMIN"]
+        }
+      },
+      "LayerDownload", {
+        "name": "QueryPanel",
+        "cfg": {
+          "activateQueryTool": true,
+          "spatialOperations": [{
+              "id": "INTERSECTS",
+              "name": "queryform.spatialfilter.operations.intersects"
+            }, {
+              "id": "CONTAINS",
+              "name": "queryform.spatialfilter.operations.contains"
+            }, {
+              "id": "WITHIN",
+              "name": "queryform.spatialfilter.operations.within"
+
+            }
+          ],
+          "spatialMethodOptions": [{
+              "id": "Viewport",
+              "name": "queryform.spatialfilter.methods.viewport"
+            }, {
+              "id": "BBOX",
+              "name": "queryform.spatialfilter.methods.box"
+            }, {
+              "id": "Circle",
+              "name": "queryform.spatialfilter.methods.circle"
+            }, {
+              "id": "Polygon",
+              "name": "queryform.spatialfilter.methods.poly"
+            }
+          ]
+        }
+      }, {
+        "name": "TOC",
+        "cfg": {
+          "activateDownloadTool": true,
+          "activateQueryTool": true,
+          "activateAddLayerButton": true,
+          "activateAddGroupButton": true,
+          "activateMetedataTool": true,
+          "layerOptions": {
+            "legendOptions": {
+              "WMSLegendOptions": "forceLabels:on",
+              "scaleDependent": true,
+              "legendWidth": 12,
+              "legendHeight": 12
+            }
+          }
+        }
+      },
+      "FilterLayer",
+      "AddGroup", {
+        "name": "TOCItemsSettings",
+        "cfg": {
+          "width": 350
+        }
+      },
+      "Tutorial",
+      "MapFooter", {
+        "name": "Measure",
+        "cfg": {
+          "defaultOptions": {
+            "showAddAsAnnotation": true
+          }
+        }
+      }, {
+        "name": "Print",
+        "cfg": {
+          "useFixedScales": true,
+          "mapPreviewOptions": {
+            "enableScalebox": true,
+            "enableRefresh": false
+          }
+        }
+      },
+      "MapImport", {
+        "name": "MapExport"
+      }, {
+        "name": "Settings",
+        "cfg": {
+          "wrap": true
+        }
+      }, {
+        "name": "MetadataExplorer",
+        "cfg": {
+          "zoomToLayer": false,
+          "wrap": true
+        }
+      }, {
+        "name": "About",
+        "showIn": [
+          "BurgerMenu"
+        ]
+      }, {
+        "name": "MousePosition",
+        "cfg": {
+          "showElevation": true,
+          "editCRS": true,
+          "showLabels": true,
+          "showToggle": true,
+          "filterAllowedCRS": [
+            "EPSG:4326",
+            "EPSG:3857"
+          ],
+          "additionalCRS": {
+            "EPSG:2193": {
+              "label": "EPSG:2193 (NZTM)"
+            },
+            "EPSG:27200": {
+              "label": "EPSG:27200 (NZMG)"
+            },
+            "EPSG:4167": {
+              "label": "EPSG:4167 (NZGD2000)"
+            }
+          }
+        }
+      }, {
+        "name": "CRSSelector",
+        "cfg": {
+          "additionalCRS": {},
+          "filterAllowedCRS": [
+            "EPSG:4326",
+            "EPSG:3857"
+          ],
+          "allowedRoles": [
+            "ADMIN"
+          ]
+        }
+      }, {
+        "name": "Search",
+        "cfg": {
+          "withToggle": [
+            "max-width: 768px",
+            "min-width: 768px"
+          ],
+          "resultsStyle": {
+            "iconUrl": "https://data.whanganui.govt.nz/wdc/images/blank.png",
+            "shadowUrl": "https://data.whanganui.govt.nz/wdc/images/blank.png",
+            "iconSize": [0, 0],
+            "iconAnchor": [0, 0],
+            "popupAnchor": [0, 0],
+            "shadowSize": [0, 0],
+            "color": "rgba(255, 255, 255, 0)",
+            "weight": 1,
+            "dashArray": "",
+            "fillColor": "rgba(255, 255, 255, 0)",
+            "fillOpacity": 0.1
+          }
+        }
+      }, {
+        "name": "Toolbar",
+        "id": "NavigationBar",
+        "cfg": {
+          "id": "navigationBar"
+        }
+      },
+      "ScaleBox", {
+        "name": "ZoomAll",
+        "override": {
+          "Toolbar": {
+            "alwaysVisible": true
+          }
+        }
+      }, {
+        "name": "MapLoading",
+        "override": {
+          "Toolbar": {
+            "alwaysVisible": true
+          }
+        }
+      }, {
+        "name": "ZoomIn",
+        "override": {
+          "Toolbar": {
+            "alwaysVisible": true
+          }
+        }
+      }, {
+        "name": "ZoomOut",
+        "override": {
+          "Toolbar": {
+            "alwaysVisible": true
+          }
+        }
+      }, {
+        "name": "Cookie",
+        "cfg": {
+          "externalCookieUrl": "",
+          "declineUrl": "http://www.google.com"
+        }
+      },
+      "OmniBar",
+      "Login",
+      "Save",
+      "SaveAs",
+      "BurgerMenu",
+      "Expander",
+
+      "Undo",
+      "Redo",
+      "FullScreen",
+      "GlobeViewSwitcher",
+      "SearchServicesConfig",
+      "SearchByBookmark",
+      "WidgetsBuilder",
+      "Widgets",
+      "WidgetsTray", {
+        "name": "FloatingLegend",
+        "cfg": {
+          "expandedOnMount": false
+        }
+      }, {
+        "name": "Timeline",
+        "cfg": {
+          "expandLimit": 20
+        }
+      },
+
+      "Playback",
+      "FeedbackMask",
+      "StyleEditor",
+      "DeleteMap"
+    ],
+    "embedded": [
+      "Details", {
+        "name": "Map",
+        "cfg": {
+          "tools": [
+            "locate"
+          ],
+          "mapOptions": {
+            "openlayers": {
+              "interactions": {
+                "pinchRotate": false,
+                "altShiftDragRotate": false
+              },
+              "attribution": {
+                "container": "#footer-attribution-container"
+              }
+            },
+            "leaflet": {
+              "attribution": {
+                "container": "#footer-attribution-container"
+              },
+              "scrollWheelZoom": false,
+              "zoomControl": true
+            },
+            "cesium": {
+              "attribution": {
+                "container": "#footer-attribution-container"
+              }
+            }
+          },
+          "toolsOptions": {
+            "scalebar": {
+              "container": "#footer-scalebar-container"
+            }
+          }
+        }
+      }, {
+        "name": "DrawerMenu",
+        "hide": "{!(request.query && request.query.forceDrawer)}"
+      }, {
+        "name": "BackgroundSelector",
+        "cfg": {
+          "bottom": 40,
+          "dimensions": {
+            "side": 65,
+            "sidePreview": 65,
+            "frame": 3,
+            "margin": 5,
+            "label": false,
+            "vertical": true
+          }
+        }
+      }, {
+        "name": "Identify",
+        "cfg": {
+          "showFullscreen": true,
+          "position": "bottom",
+          "size": 0.5,
+          "fluid": true,
+          "viewerOptions": {
+            "container": "{context.ReactSwipe}"
+          },
+          "style": {
+            "color": "#ff0000",
+            "weight": 4,
+            "radius": 4,
+            "dashArray": "",
+            "fillColor": "#ffffff",
+            "fillOpacity": 0
+          }
+        }
+      }, {
+        "name": "ZoomAll",
+        "override": {
+          "Toolbar": {
+            "alwaysVisible": true
+          }
+        }
+      }, {
+        "name": "Locate",
+        "override": {
+          "Toolbar": {
+            "alwaysVisible": true
+
+          }
+        }
+      }, {
+        "name": "FullScreen"
+      }, {
+        "name": "TOC",
+        "cfg": {
+          "activateMapTitle": false,
+          "activateSettingsTool": false,
+          "activateMetedataTool": false,
+          "activateRemoveLayer": false
+        }
+      },
+      "AddGroup",
+      "MapFooter", {
+        "name": "Settings",
+        "cfg": {
+          "wrap": true
+        }
+      }, {
+        "name": "Search",
+        "cfg": {
+          "showOptions": false,
+          "withToggle": [
+            "max-width: 768px",
+            "min-width: 768px"
+          ],
+          "resultsStyle": {
+            "iconUrl": "https://data.whanganui.govt.nz/wdc/images/blank.png",
+            "shadowUrl": "https://data.whanganui.govt.nz/wdc/images/blank.png",
+            "iconSize": [0, 0],
+            "iconAnchor": [0, 0],
+            "popupAnchor": [0, 0],
+            "shadowSize": [0, 0],
+            "color": "rgba(255, 255, 255, 0)",
+            "weight": 1,
+            "dashArray": "",
+            "fillColor": "rgba(255, 255, 255, 0)",
+            "fillOpacity": 0.1
+          }
+        }
+      }, {
+        "name": "Toolbar",
+        "id": "NavigationBar",
+
+        "cfg": {
+          "id": "navigationBar"
+        }
+      }, {
+        "name": "MapLoading",
+        "override": {
+          "Toolbar": {
+            "alwaysVisible": true
+          }
+        }
+      },
+      "Cookie",
+      "OmniBar", {
+        "name": "GoFull",
+        "override": {
+          "Toolbar": {
+            "alwaysVisible": true
+          }
+        }
+      },
+      "FeedbackMask"
+    ],
+    "common": [{
+        "name": "OmniBar",
+        "cfg": {
+          "className": "navbar shadow navbar-home"
+        }
+      }, {
+        "name": "ManagerMenu",
+        "cfg": {
+          "enableContextManager": true
+        }
+      },
+      "Login",
+      "Language", {
+        "name": "NavMenu",
+        "items": [{
+            "position": 0,
+            "label": "Test",
+            "href": "https://maps.whanganui.govt.nz"
+          }
+        ]
+      }, {
+        "name": "Attribution",
+        "cfg": {
+          "href": "https://maps.whanganui.govt.nz",
+          "label": "Whanganui Map Viewer",
+          "src": "assets/img/wdc_logo.png"
+        }
+      },
+      "ScrollTop",
+      "Notifications"
+    ],
+    "maps": [{
+        "name": "HomeDescription",
+        "cfg": {
+          "name": "Whanganui Map Viewer"
+        }
+      },
+      "MapSearch",
+      "CreateNewMap",
+      "FeaturedMaps",
+      "ContentTabs", {
+        "name": "Maps",
+        "cfg": {
+          "mapsOptions": {
+            "start": 0,
+            "limit": 12
+          },
+          "fluid": true
+        }
+      }, {
+        "name": "Dashboards",
+        "cfg": {
+          "mapsOptions": {
+            "start": 0,
+            "limit": 12
+
+          },
+          "fluid": true
+        }
+      }, {
+        "name": "GeoStories",
+        "cfg": {
+          "mapsOptions": {
+            "start": 0,
+            "limit": 12
+          },
+          "fluid": true
+        }
+      }, {
+        "name": "Footer",
+        "cfg": {
+          "logo": {
+            "src": "assets/img/nz-govt-logo.png",
+            "width": 200,
+            "height": "auto",
+            "href": "https://govt.nz"
+          }
+        }
+      }, {
+
+        "name": "Cookie",
+        "cfg": {
+          "externalCookieUrl": "",
+          "declineUrl": "http://www.google.com"
+        }
+      }
+    ],
+    "dashboard": [{
+        "name": "OmniBar",
+        "cfg": {
+          "containerPosition": "header",
+          "className": "navbar shadow navbar-home"
+        }
+      },
+      "Login",
+      "Language",
+      "NavMenu",
+      "DashboardSave",
+      "DashboardSaveAs", {
+        "name": "Attribution",
+        "cfg": {
+          "href": "https://maps.whanganui.govt.nz/",
+          "label": "Whanganui Maps",
+          "src": "assets/img/wdc_logo.png"
+        }
+      },
+      "Home", {
+        "name": "Share",
+        "cfg": {
+          "showAPI": false,
+          "advancedSettings": false,
+          "shareUrlRegex": "(h[^#]*)#\\/dashboard\\/([A-Za-z0-9]*)",
+          "shareUrlReplaceString": "$1dashboard-embedded.html#/$2",
+          "embedOptions": {
+            "showTOCToggle": false,
+            "showConnectionsParamToggle": true,
+            "allowFullScreen": false,
+            "sizeOptions": {
+              "Small": {
+                "width": 600,
+                "height": 500
+              },
+              "Medium": {
+                "width": 800,
+                "height": 600
+              },
+              "Large": {
+                "width": 1000,
+                "height": 800
+              },
+              "Custom": {
+                "width": 0,
+                "height": 0
+              }
+            },
+            "selectedOption": "Small"
+
+          }
+        }
+      }, {
+        "name": "DashboardEditor",
+        "cfg": {
+          "selectedService": "Whanganui DC WMS",
+          "services": {
+            "Whanganui DC WMS": {
+              "url": "https://data.whanganui.govt.nz/geoserver/wms",
+              "type": "wms",
+              "title": "Whanganui DC WMS",
+              "autoload": true
+            }
+          },
+          "containerPosition": "columns"
+        }
+      }, {
+        "name": "QueryPanel",
+        "cfg": {
+          "toolsOptions": {
+            "hideCrossLayer": true,
+            "hideSpatialFilter": true
+          },
+          "containerPosition": "columns"
+        }
+      },
+      "BurgerMenu",
+      "Dashboard",
+      "Notifications", {
+        "name": "Tutorial",
+        "cfg": {
+          "allowClicksThruHole": false,
+          "containerPosition": "header",
+          "preset": "dashboard_tutorial"
+        }
+      }, {
+        "name": "FeedbackMask",
+        "cfg": {
+          "containerPosition": "header"
+        }
+      }
+    ],
+
+    "geostory-embedded": [
+      "GeoStory", {
+        "name": "GeoStoryNavigation",
+        "cfg": {
+          "containerPosition": "header"
+        }
+      }, {
+        "name": "FeedbackMask",
+        "cfg": {
+          "containerPosition": "header"
+        }
+      }
+    ],
+    "dashboard-embedded": [{
+        "name": "Dashboard",
+        "cfg": {
+          "minLayoutWidth": 768
+        }
+      }, {
+        "name": "FeedbackMask"
+      }
+    ],
+    "geostory": [{
+        "name": "OmniBar",
+        "cfg": {
+          "containerPosition": "header",
+          "className": "navbar shadow navbar-home"
+        }
+      }, {
+        "name": "Tutorial",
+        "cfg": {
+          "allowClicksThruHole": false,
+          "containerPosition": "header",
+          "preset": "geostory_view_tutorial"
+        }
+      },
+      "Login",
+      "BurgerMenu",
+      "Language",
+      "NavMenu", {
+        "name": "Attribution",
+        "cfg": {
+          "href": "https://maps.whanganui.govt.nz/",
+          "label": "Whanganui Maps",
+          "src": "assets/img/wdc_logo.png"
+        }
+      },
+      "Home", {
+        "name": "GeoStory"
+      }, {
+        "name": "DeleteGeoStory"
+      },
+      "GeoStorySave",
+      "GeoStorySaveAs",
+      "MapEditor",
+      "MediaEditor", {
+        "name": "GeoStoryEditor",
+        "cfg": {
+          "disablePluginIf": "{!!(state('browser') && state('browser').mobile)}",
+          "containerPosition": "columns"
+        }
+      }, {
+        "name": "GeoStoryNavigation",
+        "cfg": {
+          "containerPosition": "header"
+        }
+      },
+      "Notifications", {
+        "name": "FeedbackMask",
+        "cfg": {
+          "containerPosition": "header"
+        }
+      }, {
+        "name": "Share",
+        "cfg": {
+          "embedPanel": true,
+          "showAPI": false,
+          "embedOptions": {
+            "showTOCToggle": false,
+            "allowFullScreen": false
+          },
+          "shareUrlRegex": "(h[^#]*)#\\/geostory\\/([^\\/]*)\\/([A-Za-z0-9]*)",
+          "shareUrlReplaceString": "$1geostory-embedded.html#/$3",
+          "advancedSettings": {
+            "hideInTab": "embed",
+            "homeButton": true,
+            "sectionId": true
+          }
+        }
+      }
+    ],
+    "context-creator": [{
+        "name": "OmniBar",
+        "cfg": {
+          "containerPosition": "header",
+
+          "className": "navbar shadow navbar-home"
+        }
+
+      },
+      "Redirect",
+      "Login",
+      "Language",
+      "NavMenu", {
+
+        "name": "Attribution",
+        "cfg": {
+          "href": "https://maps.whanganui.govt.nz/",
+          "label": "Whanganui Maps",
+          "src": "assets/img/wdc_logo.png"
+        }
+      },
+      "Tutorial", {
+        "name": "ContextCreator",
+        "cfg": {
+          "documentationBaseURL": "https://mapstore.geosolutionsgroup.com/mapstore/docs/api/plugins",
+          "backToPageDestRoute": "/context-manager",
+          "backToPageConfirmationMessage": "contextCreator.undo"
+        }
+      },
+      "Notifications", {
+        "name": "FeedbackMask",
+        "cfg": {
+          "containerPosition": "header"
+        }
+      }
+    ],
+
+    "manager": ["Header", "Redirect", "Manager", "Home", "UserManager", "GroupManager", {
+        "name": "Footer",
+        "cfg": {
+          "logo": {
+            "src": "assets/img/nz-govt-logo.png",
+            "width": 200,
+            "height": "auto",
+            "href": "https://govt.nz"
+          }
+        }
+      }
+    ],
+    "context-manager": ["Header", "Redirect", "Home", "ContextManager", {
+        "name": "Footer",
+        "cfg": {
+          "logo": {
+            "src": "assets/img/nz-govt-logo.png",
+            "width": 200,
+            "height": "auto",
+            "href": "https://govt.nz"
+          }
+        }
+      }
+    ]
+  }
+}
