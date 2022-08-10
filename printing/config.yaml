@@ -1,0 +1,1576 @@
+#===========================================================================
+# allowed DPIs
+#===========================================================================
+dpis:
+  - 96
+  - 150
+  - 300
+
+#===========================================================================
+# the allowed scales
+#===========================================================================
+scales:
+  - 200
+  - 250
+  - 500
+  - 1000
+  - 1500
+  - 2000
+  - 2500
+  - 3000
+  - 5000
+  - 7500
+  - 10000
+  - 20000
+  - 25000
+  - 30000
+  - 40000
+  - 50000
+  - 75000
+  - 100000
+  - 125000
+  - 150000
+  - 175000
+  - 200000
+  - 225000
+  - 250000
+  - 275000
+  - 300000
+  - 400000
+  - 500000
+  - 1000000
+
+formats:
+  - '*'
+
+#===========================================================================
+# the list of allowed hosts
+#===========================================================================
+hosts:
+
+  - !localMatch
+    dummy: true
+
+  - !dnsMatch
+    host: maps.whanganui.govt.nz
+  - !dnsMatch
+    host: data.whanganui.govt.nz
+  - !dnsMatch
+    host: mapstore.whanganui.govt.nz
+  - !dnsMatch
+    host: learn.whanganui.govt.nz
+  - !dnsMatch
+    host: wpc-18425.local.wanganui.govt.nz
+
+    host: a.tile.openstreetmap.org
+  - !dnsMatch
+    host: b.tile.openstreetmap.org
+  - !dnsMatch
+    host: c.tile.openstreetmap.org
+  - !dnsMatch
+    host: d.tile.openstreetmap.org
+
+  - !dnsMatch
+    host: tiles-a.data-cdn.linz.govt.nz
+  - !dnsMatch
+    host: tiles-b.data-cdn.linz.govt.nz
+  - !dnsMatch
+    host: tiles-c.data-cdn.linz.govt.nz
+  - !dnsMatch
+    host: tiles-d.data-cdn.linz.govt.nz
+
+  - !dnsMatch
+    host: basemaps.linz.govt.nz
+
+  - !dnsMatch
+    host: mt1.google.com
+
+
+brokenUrlPlaceholder: printing/blank.png
+disableScaleLocking: true
+outputFilename: 'whanganui_maps.pdf'
+
+# proxyBaseUrl: https://data.whanganui.govt.nz/geoserver/pdf
+
+
+
+layouts:
+  #=======A4 portrait with legend=============================================
+  A4 :
+  #===========================================================================
+    outputFilename: 'whanganui-map-A4P-L-${now yyMMdd-hhmmss-SSS}.pdf'
+    metaData:
+      title: 'A4 Portait Print with Legend'
+      author: 'Whanganui District Council'
+      subject: 'GIS Print'
+      keywords: 'Whanganui, GIS, Spatial, GeoSpatial'
+    mainPage:
+      rotation: true
+      pageSize: 595 842
+      landscape: false
+      backgroundPdf: 'file://${configDir}/WDC-A4P.pdf'
+
+      items:
+        - !map
+          height: 652
+          width: 524
+          absoluteX: 36.5
+          absoluteY: 748
+        #legend panel
+        - !columns
+          config:
+            borderWidth: 1
+            cells:
+              - borderWidth: 2
+                borderWidthLeft: 1
+                borderColor: black
+                padding: 4
+                backgroundColor: white
+                vertAlign: bottom
+          widths: [155]
+          absoluteX: 40
+          absoluteY: 744
+          width: 155
+          items:
+            - !legends
+              horizontalAlignment: left
+              #iconMaxWidth: 150
+              iconMaxHeight: 0
+              layerSpace: 5
+              layerFontSize: 12
+              classIndentation: 5
+              classFontSize: 8
+              classSpace: 4
+              backgroundColor: #ffffff
+              failOnBrokenUrl: false
+              inline: true
+        - !columns
+          absoluteX: 35
+          absoluteY: 810
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              align: left
+              vertAlign: middle
+              fontSize: 14
+              text: '${mapTitle}'
+        - !columns
+          absoluteX: 35
+          absoluteY: 781
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              text: '${comment}'
+              fontEncoding: Cp1252
+              fontSize: 9
+              align: left
+              vertAlign: middle
+        - !columns
+          absoluteX: 36
+          absoluteY: 90
+          width: 524
+          widths: [173, 173,173]
+          items:
+            - !columns
+              nbColumns: 2
+              widths: [30,140]
+              items:
+                - !image
+                  maxWidth: 24
+                  maxHeight: 24
+                  url: 'file://${configDir}/Direction-North.svg'
+                  align: left
+                  rotation: '${rotation}'
+                  spacingAfter: 0
+
+                - !text
+                  text: 'Scale 1:${scale} on Sheet Size A4'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: left
+                  vertAlign: middle
+            - !scalebar
+              align: center
+              vertAlign: middle
+              maxSize: 173
+              type: 'bar sub'
+              intervals: 5
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Printed ${now dd/MM/yyyy  hh:mm a}'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: right
+                  vertAlign: middle
+  #=======A4 landscape with legend============================================
+  A4_landscape :
+  #===========================================================================
+    outputFilename: 'whanganui-map-A4L-L-${now yyMMdd-hhmmss-SSS}.pdf'
+    metaData:
+      title: 'A4 Landscape Print with Legend'
+      author: 'Whanganui District Council'
+      subject: 'GIS Print'
+      keywords: 'Whanganui, GIS, Spatial, GeoSpatial'
+    mainPage:
+      rotation: true
+      pageSize: 842 595
+      landscape: false
+      backgroundPdf: 'file://${configDir}/WDC-A4L.pdf'
+      items:
+        - !map
+          height: 425
+          width: 757.5
+          absoluteX: 36.5
+          absoluteY: 501.5
+        #legend panel
+        - !columns
+          config:
+            borderWidth: 1
+            cells:
+              - borderWidth: 2
+                borderWidthLeft: 1
+                borderColor: black
+                padding: 4
+                backgroundColor: white
+                vertAlign: bottom
+          widths: [170]
+          absoluteX: 40
+          absoluteY: 498
+          width: 170
+          items:
+            - !legends
+              horizontalAlignment: left
+              #iconMaxWidth: 150
+              iconMaxHeight: 0
+              layerSpace: 5
+              layerFontSize: 12
+              classIndentation: 5
+              classFontSize: 8
+              classSpace: 4
+              backgroundColor: #ffffff
+              failOnBrokenUrl: false
+        - !columns
+          absoluteX: 35
+          absoluteY: 560
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              align: left
+              vertAlign: middle
+              fontSize: 14
+              text: '${mapTitle}'
+        - !columns
+          absoluteX: 35
+          absoluteY: 529
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              text: '${comment}'
+              fontEncoding: Cp1252
+              fontSize: 9
+              align: left
+              vertAlign: middle
+        - !columns
+          absoluteX: 36
+          absoluteY: 70
+          width: 524
+          widths: [173, 173,173]
+          items:
+            - !columns
+              nbColumns: 2
+              widths: [30,140]
+              items:
+                - !image
+                  maxWidth: 24
+                  maxHeight: 24
+                  url: 'file://${configDir}/Direction-North.svg'
+                  align: left
+                  rotation: '${rotation}'
+                  spacingAfter: 0
+
+                - !text
+                  text: 'Scale 1:${scale} on Sheet Size A4'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: left
+                  vertAlign: middle
+            - !scalebar
+              align: center
+              vertAlign: middle
+              maxSize: 173
+              type: 'bar sub'
+              intervals: 5
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Printed ${now dd/MM/yyyy  hh:mm a}'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: right
+                  vertAlign: middle
+  #=======A4 portrait no legend=============================================
+  A4_no_legend :
+  #=========================================================================
+    outputFilename: 'whanganui-map-A4P-${now yyMMdd-hhmmss-SSS}.pdf'
+    metaData:
+      title: 'A4 Portait Print without Legend'
+      author: 'Whanganui District Council'
+      subject: 'GIS Print'
+      keywords: 'Whanganui, GIS, Spatial, GeoSpatial'
+    mainPage:
+      rotation: true
+      pageSize: 595 842
+      landscape: false
+      backgroundPdf: 'file://${configDir}/WDC-A4P.pdf'
+
+      items:
+        - !map
+          height: 652
+          width: 524
+          absoluteX: 36.5
+          absoluteY: 748
+        - !columns
+          absoluteX: 35
+          absoluteY: 810
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              align: left
+              vertAlign: middle
+              fontSize: 14
+              text: '${mapTitle}'
+        - !columns
+          absoluteX: 35
+          absoluteY: 781
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              text: '${comment}'
+              fontEncoding: Cp1252
+              fontSize: 9
+              align: left
+              vertAlign: middle
+        - !columns
+          absoluteX: 36
+          absoluteY: 90
+          width: 524
+          widths: [173, 173,173]
+          items:
+            - !columns
+              nbColumns: 2
+              widths: [30,140]
+              items:
+                - !image
+                  maxWidth: 24
+                  maxHeight: 24
+                  url: 'file://${configDir}/Direction-North.svg'
+                  align: left
+                  rotation: '${rotation}'
+                  spacingAfter: 0
+
+                - !text
+                  text: 'Scale 1:${scale} on Sheet Size A4'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: left
+                  vertAlign: middle
+            - !scalebar
+              align: center
+              vertAlign: middle
+              maxSize: 173
+              type: 'bar sub'
+              intervals: 5
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Printed ${now dd/MM/yyyy  hh:mm a}'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: right
+                  vertAlign: middle
+  #=======A4 landscape no legend=============================================
+  A4_no_legend_landscape :
+  #===========================================================================
+    outputFilename: 'whanganui-map-A4L-${now yyMMdd-hhmmss-SSS}.pdf'
+    metaData:
+      title: 'A4 Landscape Print without Legend'
+      author: 'Whanganui District Council'
+      subject: 'GIS Print'
+      keywords: 'Whanganui, GIS, Spatial, GeoSpatial'
+    mainPage:
+      rotation: true
+      pageSize: 842 595
+      landscape: false
+      backgroundPdf: 'file://${configDir}/WDC-A4L.pdf'
+      items:
+        - !map
+          height: 425
+          width: 757.5
+          absoluteX: 36.5
+          absoluteY: 501.5
+        - !columns
+          absoluteX: 35
+          absoluteY: 560
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              align: left
+              vertAlign: middle
+              fontSize: 14
+              text: '${mapTitle}'
+        - !columns
+          absoluteX: 35
+          absoluteY: 529
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              text: '${comment}'
+              fontEncoding: Cp1252
+              fontSize: 9
+              align: left
+              vertAlign: middle
+        - !columns
+          absoluteX: 36
+          absoluteY: 70
+          width: 524
+          widths: [173, 173,173]
+          items:
+            - !columns
+              nbColumns: 2
+              widths: [30,140]
+              items:
+                - !image
+                  maxWidth: 24
+                  maxHeight: 24
+                  url: 'file://${configDir}/Direction-North.svg'
+                  align: left
+                  rotation: '${rotation}'
+                  spacingAfter: 0
+
+                - !text
+                  text: 'Scale 1:${scale} on Sheet Size A4'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: left
+                  vertAlign: middle
+            - !scalebar
+              align: center
+              vertAlign: middle
+              maxSize: 173
+              type: 'bar sub'
+              intervals: 5
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Printed ${now dd/MM/yyyy  hh:mm a}'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: right
+                  vertAlign: middle
+  #=======A4 portrait with 2 pages legend=====================================
+  A4_2_pages_legend :
+  #===========================================================================
+    outputFilename: 'whanganui-map-A4P-L2-${now yyMMdd-hhmmss-SSS}.pdf'
+    metaData:
+      title: 'A4 Portait Print with 2 pages Legend'
+      author: 'Whanganui District Council'
+      subject: 'GIS Print'
+      keywords: 'Whanganui, GIS, Spatial, GeoSpatial'
+    mainPage:
+      rotation: true
+      pageSize: 595 842
+      landscape: false
+      backgroundPdf: 'file://${configDir}/WDC-A4P.pdf'
+
+      items:
+        - !map
+          height: 652
+          width: 524
+          absoluteX: 36.5
+          absoluteY: 748
+        - !columns
+          absoluteX: 35
+          absoluteY: 810
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              align: left
+              vertAlign: middle
+              fontSize: 14
+              text: '${mapTitle}'
+        - !columns
+          absoluteX: 35
+          absoluteY: 781
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              text: '${comment}'
+              fontEncoding: Cp1252
+              fontSize: 9
+              align: left
+              vertAlign: middle
+        - !columns
+          absoluteX: 36
+          absoluteY: 90
+          width: 524
+          widths: [173, 173,173]
+          items:
+            - !columns
+              nbColumns: 2
+              widths: [30,140]
+              items:
+                - !image
+                  maxWidth: 24
+                  maxHeight: 24
+                  url: 'file://${configDir}/Direction-North.svg'
+                  align: left
+                  rotation: '${rotation}'
+                  spacingAfter: 0
+
+                - !text
+                  text: 'Scale 1:${scale} on Sheet Size A4'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: left
+                  vertAlign: middle
+            - !scalebar
+              align: center
+              vertAlign: middle
+              maxSize: 173
+              type: 'bar sub'
+              intervals: 5
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Printed ${now dd/MM/yyyy  hh:mm a}'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: right
+                  vertAlign: middle
+    lastPage:
+      pageSize: 595 842
+      landscape: false
+      backgroundPdf: 'file://${configDir}/WDC-A4P.pdf'
+      items:
+        #legend panel
+        - !columns
+          config:
+            borderWidth: 0
+            cells:
+              - borderWidth: 0
+                borderWidthLeft: 0
+                borderColor: black
+                padding: 4
+                backgroundColor: white
+                vertAlign: bottom
+          widths: [520]
+          absoluteX: 37
+          absoluteY: 748
+          width: 520
+          items:
+            - !legends
+              failOnBrokenUrl: false
+              horizontalAlignment: left
+              iconMaxWidth: 0
+              iconMaxHeight: 650
+              maxHeight: 650
+              maxColumns: 1
+              maxWidth: 520
+              layerSpace: 5
+              layerFontSize: 12
+              classIndentation: 5
+              classFontSize: 8
+              classSpace: 4
+              backgroundColor: #ffffff
+              reorderColumns: true
+              dontBreakItems: true
+              overflow: true
+        - !columns
+          absoluteX: 35
+          absoluteY: 810
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              align: left
+              vertAlign: middle
+              fontSize: 14
+              text: '${mapTitle}'
+        - !columns
+          absoluteX: 35
+          absoluteY: 781
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              text: '${comment}'
+              fontEncoding: Cp1252
+              fontSize: 9
+              align: left
+              vertAlign: middle
+        - !columns
+          absoluteX: 36
+          absoluteY: 90
+          width: 524
+          widths: [173, 173,173]
+          items:
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Legend Page'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: left
+                  vertAlign: middle
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: ''
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: center
+                  vertAlign: middle
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Printed ${now dd/MM/yyyy  hh:mm a}'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: right
+                  vertAlign: middle
+  #=======A4 landscape with 2 pages legend====================================
+  A4_2_pages_legend_landscape :
+  #===========================================================================
+    outputFilename: 'whanganui-map-A4L-L2-${now yyMMdd-hhmmss-SSS}.pdf'
+    metaData:
+      title: 'A4 Landscape Print with 2 pages Legend'
+      author: 'Whanganui District Council'
+      subject: 'GIS Print'
+      keywords: 'Whanganui, GIS, Spatial, GeoSpatial'
+    mainPage:
+      rotation: true
+      pageSize: 842 595
+      landscape: false
+      backgroundPdf: 'file://${configDir}/WDC-A4L.pdf'
+      items:
+        - !map
+          height: 425
+          width: 757.5
+          absoluteX: 36.5
+          absoluteY: 501.5
+        - !columns
+          absoluteX: 35
+          absoluteY: 560
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              align: left
+              vertAlign: middle
+              fontSize: 14
+              text: '${mapTitle}'
+        - !columns
+          absoluteX: 35
+          absoluteY: 529
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              text: '${comment}'
+              fontEncoding: Cp1252
+              fontSize: 9
+              align: left
+              vertAlign: middle
+        - !columns
+          absoluteX: 36
+          absoluteY: 70
+          width: 524
+          widths: [173, 173,173]
+          items:
+            - !columns
+              nbColumns: 2
+              widths: [30,140]
+              items:
+                - !image
+                  maxWidth: 24
+                  maxHeight: 24
+                  url: 'file://${configDir}/Direction-North.svg'
+                  align: left
+                  rotation: '${rotation}'
+                  spacingAfter: 0
+
+                - !text
+                  text: 'Scale 1:${scale} on Sheet Size A4'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: left
+                  vertAlign: middle
+            - !scalebar
+              align: center
+              vertAlign: middle
+              maxSize: 173
+              type: 'bar sub'
+              intervals: 5
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Printed ${now dd/MM/yyyy  hh:mm a}'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: right
+                  vertAlign: middle
+    lastPage:
+      pageSize: 842 595
+      landscape: false
+      backgroundPdf: 'file://${configDir}/WDC-A4L.pdf'
+      items:
+        #legend panel
+        - !columns
+          config:
+            borderWidth: 0
+            cells:
+              - borderWidth: 0
+                borderWidthLeft: 0
+                borderColor: black
+                padding: 4
+                backgroundColor: white
+                vertAlign: bottom
+          absoluteX:40
+          absoluteY: 500
+          width: 750
+          widths: [750]
+          items:
+            - !legends
+              failOnBrokenUrl: false
+              horizontalAlignment: left
+              iconMaxWidth: 0
+              iconMaxHeight: 500
+              maxHeight: 500
+              maxColumns: 2
+              maxWidth: 750
+              layerSpace: 5
+              layerFontSize: 12
+              classIndentation: 5
+              classFontSize: 8
+              classSpace: 4
+              backgroundColor: #ffffff
+              reorderColumns: true
+              dontBreakItems: true
+              overflow: true
+        - !columns
+          absoluteX: 35
+          absoluteY: 560
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              align: left
+              vertAlign: middle
+              fontSize: 14
+              text: '${mapTitle}'
+        - !columns
+          absoluteX: 35
+          absoluteY: 529
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              text: '${comment}'
+              fontEncoding: Cp1252
+              fontSize: 9
+              align: left
+              vertAlign: middle
+        - !columns
+          absoluteX: 36
+          absoluteY: 70
+          width: 524
+          widths: [173, 173,173]
+          items:
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Legend Page'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: left
+                  vertAlign: middle
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: ''
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: center
+                  vertAlign: middle
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Printed ${now dd/MM/yyyy  hh:mm a}'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: right
+                  vertAlign: middle
+  #=======A3 portrait with legend=============================================
+  A3 :
+  #===========================================================================
+    outputFilename: 'whanganui-map-A3P-L-${now yyMMdd-hhmmss-SSS}.pdf'
+    metaData:
+      title: 'A3 Portrait Print with Legend'
+      author: 'Whanganui District Council'
+      subject: 'GIS Print'
+      keywords: 'Whanganui, GIS, Spatial, GeoSpatial'
+    mainPage:
+      rotation: true
+      pageSize: 842 1190
+      landscape: false
+      backgroundPdf: 'file://${configDir}/WDC-A3P.pdf'
+      items:
+        - !map
+          height: 1021
+          width: 771
+          absoluteX: 36.5
+          absoluteY: 1097.5
+        #legend panel
+        - !columns
+          config:
+            borderWidth: 1
+            cells:
+              - borderWidth: 2
+                borderWidthLeft: 1
+                borderColor: black
+                padding: 4
+                backgroundColor: white
+                vertAlign: bottom
+          widths: [170]
+          absoluteX: 40
+          absoluteY: 1094
+          width: 170
+          items:
+            - !legends
+              horizontalAlignment: left
+              #iconMaxWidth: 150
+              iconMaxHeight: 0
+              layerSpace: 5
+              layerFontSize: 12
+              classIndentation: 5
+              classFontSize: 8
+              classSpace: 4
+              backgroundColor: #ffffff
+              failOnBrokenUrl: false
+        - !columns
+          absoluteX: 35
+          absoluteY: 1156
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              align: left
+              vertAlign: middle
+              fontSize: 14
+              text: '${mapTitle}'
+        - !columns
+          absoluteX: 35
+          absoluteY: 1125
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              text: '${comment}'
+              fontEncoding: Cp1252
+              fontSize: 9
+              align: left
+              vertAlign: middle
+        - !columns
+          absoluteX: 36
+          absoluteY: 70
+          width: 524
+          widths: [173, 173,173]
+          items:
+            - !columns
+              nbColumns: 2
+              widths: [30,140]
+              items:
+                - !image
+                  maxWidth: 24
+                  maxHeight: 24
+                  url: 'file://${configDir}/Direction-North.svg'
+                  align: left
+                  rotation: '${rotation}'
+                  spacingAfter: 0
+
+                - !text
+                  text: 'Scale 1:${scale} on Sheet Size A3'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: left
+                  vertAlign: middle
+            - !scalebar
+              align: center
+              vertAlign: middle
+              maxSize: 173
+              type: 'bar sub'
+              intervals: 5
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Printed ${now dd/MM/yyyy  hh:mm a}'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: right
+                  vertAlign: middle
+  #=======A3 landscape with legend============================================
+  A3_landscape :
+  #===========================================================================
+    outputFilename: 'whanganui-map-A3L-L-${now yyMMdd-hhmmss-SSS}.pdf'
+    metaData:
+      title: 'A4 Landscape Print with Legend'
+      author: 'Whanganui District Council'
+      subject: 'GIS Print'
+      keywords: 'Whanganui, GIS, Spatial, GeoSpatial'
+    mainPage:
+      rotation: true
+      pageSize: 1190 842
+      landscape: false
+      backgroundPdf: 'file://${configDir}/WDC-A3L.pdf'
+
+      items:
+        - !map
+          height: 680
+          width: 1120
+          absoluteX: 36.5
+          absoluteY: 748
+        #legend panel
+        - !columns
+          config:
+            borderWidth: 1
+            cells:
+              - borderWidth: 2
+                borderWidthLeft: 1
+                borderColor: black
+                padding: 4
+                #backgroundColor: white
+                vertAlign: top
+          widths: [150]
+          absoluteX: 40
+          absoluteY: 744
+          width: 150
+          spacingAfter: 0
+          items:
+            - !legends
+              #maxHeight: 0
+              columnMargin: 3
+              defaultScale: 0.3
+              maxWidth: 0
+              horizontalAlignment: left
+              iconMaxWidth: 0
+              iconMaxHeight: 0
+              layerSpace: 5
+              layerFontSize: 8
+              classIndentation: 5
+              classFontSize: 14
+              classSpace: 4
+              backgroundColor: #ffffff
+              failOnBrokenUrl: false
+              inline: true
+              #columnMaxWidth: 100
+              #borders: true
+        - !columns
+          absoluteX: 35
+          absoluteY: 810
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              align: left
+              vertAlign: middle
+              fontSize: 14
+              text: '${mapTitle}'
+        - !columns
+          absoluteX: 35
+          absoluteY: 781
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              text: '${comment}'
+              fontEncoding: Cp1252
+              fontSize: 9
+              align: left
+              vertAlign: middle
+        - !columns
+          absoluteX: 36
+          absoluteY: 62
+          width: 524
+          widths: [173, 173,173]
+          items:
+            - !columns
+              nbColumns: 2
+              widths: [30,140]
+              items:
+                - !image
+                  maxWidth: 24
+                  maxHeight: 24
+                  url: 'file://${configDir}/Direction-North.svg'
+                  align: left
+                  rotation: '${rotation}'
+                  spacingAfter: 0
+
+                - !text
+                  text: 'Scale 1:${scale} on Sheet Size A3'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: left
+                  vertAlign: middle
+            - !scalebar
+              align: center
+              vertAlign: middle
+              maxSize: 173
+              type: 'bar sub'
+              intervals: 5
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Printed ${now dd/MM/yyyy  hh:mm a}'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: right
+                  vertAlign: middle
+  #=======A3 portrait no legend============================================
+  A3_no_legend :
+  #========================================================================
+    outputFilename: 'whanganui-map-A3P-${now yyMMdd-hhmmss-SSS}.pdf'
+    metaData:
+      title: 'A3 Portrait Print without Legend'
+      author: 'Whanganui District Council'
+      subject: 'GIS Print'
+      keywords: 'Whanganui, GIS, Spatial, GeoSpatial'
+    mainPage:
+      rotation: true
+      pageSize: 842 1190
+      landscape: false
+      backgroundPdf: 'file://${configDir}/WDC-A3P.pdf'
+      items:
+        - !map
+          height: 1021
+          width: 771
+          absoluteX: 36.5
+          absoluteY: 1097.5
+        - !columns
+          absoluteX: 35
+          absoluteY: 1156
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              align: left
+              vertAlign: middle
+              fontSize: 14
+              text: '${mapTitle}'
+        - !columns
+          absoluteX: 35
+          absoluteY: 1125
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              text: '${comment}'
+              fontEncoding: Cp1252
+              fontSize: 9
+              align: left
+              vertAlign: middle
+        - !columns
+          absoluteX: 36
+          absoluteY: 70
+          width: 524
+          widths: [173, 173,173]
+          items:
+            - !columns
+              nbColumns: 2
+              widths: [30,140]
+              items:
+                - !image
+                  maxWidth: 24
+                  maxHeight: 24
+                  url: 'file://${configDir}/Direction-North.svg'
+                  align: left
+                  rotation: '${rotation}'
+                  spacingAfter: 0
+
+                - !text
+                  text: 'Scale 1:${scale} on Sheet Size A3'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: left
+                  vertAlign: middle
+            - !scalebar
+              align: center
+              vertAlign: middle
+              maxSize: 173
+              type: 'bar sub'
+              intervals: 5
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Printed ${now dd/MM/yyyy  hh:mm a}'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: right
+                  vertAlign: middle
+  #=======A3 landscape no legend============================================
+  A3_no_legend_landscape :
+  #=========================================================================
+    outputFilename: 'whanganui-map-A3L-${now yyMMdd-hhmmss-SSS}.pdf'
+    metaData:
+      title: 'A3 Landscape Print without Legend'
+      author: 'Whanganui District Council'
+      subject: 'GIS Print'
+      keywords: 'Whanganui, GIS, Spatial, GeoSpatial'
+    mainPage:
+      rotation: true
+      pageSize: 1190 842
+      landscape: false
+      backgroundPdf: 'file://${configDir}/WDC-A3L.pdf'
+
+      items:
+        - !map
+          height: 680
+          width: 1120
+          absoluteX: 36.5
+          absoluteY: 748
+        - !columns
+          absoluteX: 35
+          absoluteY: 810
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              align: left
+              vertAlign: middle
+              fontSize: 14
+              text: '${mapTitle}'
+        - !columns
+          absoluteX: 35
+          absoluteY: 781
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              text: '${comment}'
+              fontEncoding: Cp1252
+              fontSize: 9
+              align: left
+              vertAlign: middle
+        - !columns
+          absoluteX: 36
+          absoluteY: 62
+          width: 524
+          widths: [173, 173,173]
+          items:
+            - !columns
+              nbColumns: 2
+              widths: [30,140]
+              items:
+                - !image
+                  maxWidth: 24
+                  maxHeight: 24
+                  url: 'file://${configDir}/Direction-North.svg'
+                  align: left
+                  rotation: '${rotation}'
+                  spacingAfter: 0
+
+                - !text
+                  text: 'Scale 1:${scale} on Sheet Size A3'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: left
+                  vertAlign: middle
+            - !scalebar
+              align: center
+              vertAlign: middle
+              maxSize: 173
+              type: 'bar sub'
+              intervals: 5
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Printed ${now dd/MM/yyyy  hh:mm a}'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: right
+                  vertAlign: middle
+  #=======A3 portrait two pages legend======================================
+  A3_2_pages_legend :
+  #=========================================================================
+    outputFilename: 'whanganui-map-A3P-2L-${now yyMMdd-hhmmss-SSS}.pdf'
+    metaData:
+      title: 'A3 Portrait Print 2 pages with Legend'
+      author: 'Whanganui District Council'
+      subject: 'GIS Print'
+      keywords: 'Whanganui, GIS, Spatial, GeoSpatial'
+    mainPage:
+      rotation: true
+      pageSize: 842 1190
+      landscape: false
+      backgroundPdf: 'file://${configDir}/WDC-A3P.pdf'
+      items:
+        - !map
+          height: 1021
+          width: 771
+          absoluteX: 36.5
+          absoluteY: 1097.5
+        - !columns
+          absoluteX: 35
+          absoluteY: 1156
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              align: left
+              vertAlign: middle
+              fontSize: 14
+              text: '${mapTitle}'
+        - !columns
+          absoluteX: 35
+          absoluteY: 1125
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              text: '${comment}'
+              fontEncoding: Cp1252
+              fontSize: 9
+              align: left
+              vertAlign: middle
+        - !columns
+          absoluteX: 36
+          absoluteY: 70
+          width: 524
+          widths: [173, 173,173]
+          items:
+            - !columns
+              nbColumns: 2
+              widths: [30,140]
+              items:
+                - !image
+                  maxWidth: 24
+                  maxHeight: 24
+                  url: 'file://${configDir}/Direction-North.svg'
+                  align: left
+                  rotation: '${rotation}'
+                  spacingAfter: 0
+
+                - !text
+                  text: 'Scale 1:${scale} on Sheet Size A3'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: left
+                  vertAlign: middle
+            - !scalebar
+              align: center
+              vertAlign: middle
+              maxSize: 173
+              type: 'bar sub'
+              intervals: 5
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Printed ${now dd/MM/yyyy  hh:mm a}'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: right
+                  vertAlign: middle
+    lastPage:
+      pageSize: 842 1190
+      landscape: false
+      backgroundPdf: 'file://${configDir}/WDC-A3P.pdf'
+      items:
+        #legend panel
+        - !columns
+          config:
+            borderWidth: 0
+            cells:
+              - borderWidth: 2
+                borderWidthLeft: 1
+                borderColor: black
+                padding: 4
+                backgroundColor: white
+                vertAlign: bottom
+          widths: [170]
+          absoluteX: 40
+          absoluteY: 1094
+          width: 766
+          items:
+            - !legends
+              horizontalAlignment: left
+              #iconMaxWidth: 150
+              iconMaxHeight: 0
+              layerSpace: 5
+              layerFontSize: 12
+              classIndentation: 5
+              classFontSize: 8
+              classSpace: 4
+              backgroundColor: #ffffff
+              failOnBrokenUrl: false
+        - !columns
+          absoluteX: 35
+          absoluteY: 1156
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              align: left
+              vertAlign: middle
+              fontSize: 14
+              text: '${mapTitle}'
+        - !columns
+          absoluteX: 35
+          absoluteY: 1125
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              text: '${comment}'
+              fontEncoding: Cp1252
+              fontSize: 9
+              align: left
+              vertAlign: middle
+        - !columns
+          absoluteX: 36
+          absoluteY: 70
+          width: 524
+          widths: [173, 173,173]
+          items:
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Legend Page'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: left
+                  vertAlign: middle
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: ''
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: center
+                  vertAlign: middle
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Printed ${now dd/MM/yyyy  hh:mm a}'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: right
+                  vertAlign: middle
+
+  #===========================================================================
+  A3_2_pages_legend_landscape :
+  #===========================================================================
+    outputFilename: 'whanganui-map-A3L-2L-${now yyMMdd-hhmmss-SSS}.pdf'
+    metaData:
+      title: 'A4 Landscape Print 2 pages with Legend'
+      author: 'Whanganui District Council'
+      subject: 'GIS Print'
+      keywords: 'Whanganui, GIS, Spatial, GeoSpatial'
+    mainPage:
+      rotation: true
+      pageSize: 1190 842
+      landscape: false
+      backgroundPdf: 'file://${configDir}/WDC-A3L.pdf'
+
+      items:
+        - !map
+          height: 680
+          width: 1120
+          absoluteX: 36.5
+          absoluteY: 748
+        - !columns
+          absoluteX: 35
+          absoluteY: 810
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              align: left
+              vertAlign: middle
+              fontSize: 14
+              text: '${mapTitle}'
+        - !columns
+          absoluteX: 35
+          absoluteY: 781
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              text: '${comment}'
+              fontEncoding: Cp1252
+              fontSize: 9
+              align: left
+              vertAlign: middle
+        - !columns
+          absoluteX: 36
+          absoluteY: 62
+          width: 524
+          widths: [173, 173,173]
+          items:
+            - !columns
+              nbColumns: 2
+              widths: [30,140]
+              items:
+                - !image
+                  maxWidth: 24
+                  maxHeight: 24
+                  url: 'file://${configDir}/Direction-North.svg'
+                  align: left
+                  rotation: '${rotation}'
+                  spacingAfter: 0
+
+                - !text
+                  text: 'Scale 1:${scale} on Sheet Size A3'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: left
+                  vertAlign: middle
+            - !scalebar
+              align: center
+              vertAlign: middle
+              maxSize: 173
+              type: 'bar sub'
+              intervals: 5
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Printed ${now dd/MM/yyyy  hh:mm a}'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: right
+                  vertAlign: middle
+    lastPage:
+      pageSize: 1190 842
+      landscape: false
+      backgroundPdf: 'file://${configDir}/WDC-A3L.pdf'
+
+      items:
+        #legend panel
+        - !columns
+          config:
+            borderWidth: 0
+            cells:
+              - borderWidth: 2
+                borderWidthLeft: 1
+                borderColor: black
+                padding: 4
+                backgroundColor: white
+                vertAlign: bottom
+          widths: [20]
+          absoluteX: 40
+          absoluteY: 744
+          width: 1114
+          items:
+            - !legends
+              borders: false
+              maxHeight: 670
+              columnMargin: 3
+              defaultScale: 0
+              maxWidth: 280
+              horizontalAlignment: left
+              #iconMaxWidth: 150
+              iconMaxHeight: 0
+              layerSpace: 5
+              layerFontSize: 12
+              classIndentation: 5
+              classFontSize: 8
+              classSpace: 4
+              backgroundColor: #ffffff
+              failOnBrokenUrl: false
+              inline: true
+        - !columns
+          absoluteX: 35
+          absoluteY: 810
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              align: left
+              vertAlign: middle
+              fontSize: 14
+              text: '${mapTitle}'
+        - !columns
+          absoluteX: 35
+          absoluteY: 781
+          width: 298
+          widths: [395]
+          items:
+            - !text
+              text: '${comment}'
+              fontEncoding: Cp1252
+              fontSize: 9
+              align: left
+              vertAlign: middle
+        - !columns
+          absoluteX: 36
+          absoluteY: 62
+          width: 524
+          widths: [173, 173,173]
+          items:
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Legend Page'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: left
+                  vertAlign: middle
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: ''
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: center
+                  vertAlign: middle
+            - !columns
+              nbColumns: 1
+              items:
+                - !text
+                  text: 'Printed ${now dd/MM/yyyy  hh:mm a}'
+                  fontEncoding: Cp1252
+                  fontSize: 9
+                  align: right
+                  vertAlign: middle
