@@ -9,12 +9,17 @@
 import { checkForMissingPlugins } from '@mapstore/utils/DebugUtils';
 import main from '@mapstore/product/main';
 const ConfigUtils = require('@mapstore/utils/ConfigUtils').default;
+
+import '../assets/css/custom_root.css';
+import '../assets/css/custom.css';
+import '../assets/css/custom_wdc.css';
+
 /**
  * Add custom (overriding) translations with:
  *
  * ConfigUtils.setConfigProp('translationsPath', ['./MapStore2/web/client/translations', './translations']);
  */
-ConfigUtils.setConfigProp('translationsPath', './MapStore2/web/client/translations');
+ConfigUtils.setConfigProp('translationsPath', ['./MapStore2/web/client/translations', './translations']);
 ConfigUtils.setConfigProp('themePrefix', 'MapStore2-WhanganuiDC');
 
 /**
@@ -22,7 +27,8 @@ ConfigUtils.setConfigProp('themePrefix', 'MapStore2-WhanganuiDC');
  *
  * ConfigUtils.setLocalConfigurationFile('localConfig.json');
  */
-ConfigUtils.setLocalConfigurationFile('MapStore2/web/client/configs/localConfig.json');
+// ConfigUtils.setLocalConfigurationFile('MapStore2/web/client/configs/localConfig.json');
+ConfigUtils.setLocalConfigurationFile('configs/localConfig.json');
 
 /**
  * Use a custom application configuration file with:

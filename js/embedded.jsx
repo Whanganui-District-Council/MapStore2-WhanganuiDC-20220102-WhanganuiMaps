@@ -10,12 +10,16 @@ import {
     setConfigProp,
     setLocalConfigurationFile
 } from '@mapstore/utils/ConfigUtils';
+
+import '../assets/css/custom_root.css';
+import '../assets/css/custom.css';
+
 /**
  * Add custom (overriding) translations with:
  *
  * setConfigProp('translationsPath', ['./MapStore2/web/client/translations', './translations']);
  */
-setConfigProp('translationsPath', './MapStore2/web/client/translations');
+setConfigProp('translationsPath', ['./MapStore2/web/client/translations', './translations']);
 setConfigProp('themePrefix', 'MapStore2-WhanganuiDC');
 
 /**
@@ -23,6 +27,7 @@ setConfigProp('themePrefix', 'MapStore2-WhanganuiDC');
  *
  * setLocalConfigurationFile('localConfig.json');
  */
-setLocalConfigurationFile('MapStore2/web/client/configs/localConfig.json');
+// setLocalConfigurationFile('MapStore2/web/client/configs/localConfig.json');
+setLocalConfigurationFile('configs/localConfig.json');
 
 import('@mapstore/product/embedded');
