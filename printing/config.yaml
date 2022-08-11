@@ -86,7 +86,7 @@ hosts:
     host: mt1.google.com
 
 
-brokenUrlPlaceholder: printing/blank.png
+brokenUrlPlaceholder: 'data:png,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII='
 disableScaleLocking: true
 outputFilename: 'whanganui_maps.pdf'
 
