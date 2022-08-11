@@ -24,7 +24,7 @@ module.exports = require('./MapStore2/build/buildConfig')({
     paths,
     plugins: [extractThemesPlugin, ModuleFederationPlugin],
     prod: true,
-    publicPath: "https://data.whanganui.govt.nz/mapstore2-whanganuidc-test/dist/",
+    publicPath: "https://data.whanganui.govt.nz/mapstore2-whanganuidc/dist/",
     cssPrefix: '.MapStore2-WhanganuiDC',
     prodPlugins: [
         new HtmlWebpackPlugin({

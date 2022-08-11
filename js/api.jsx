@@ -7,7 +7,7 @@
  */
 const getScriptPath = () => {
     const scriptEl = document.getElementById('ms2-api');
-    return scriptEl && scriptEl.src && scriptEl.src.substring(0, scriptEl.src.lastIndexOf('/')) || 'https://data.whanganui.govt.nz/mapstore2-whanganuidc-test/dist';
+    return scriptEl && scriptEl.src && scriptEl.src.substring(0, scriptEl.src.lastIndexOf('/')) || 'https://data.whanganui.govt.nz/mapstore2-whanganuidc/dist';
 };
 
 const MapStore2 = require('../MapStore2/web/client/jsapi/MapStore2').default.withPlugins(require('./apiPlugins').default, {
@@ -16,6 +16,6 @@ const MapStore2 = require('../MapStore2/web/client/jsapi/MapStore2').default.wit
     },
     noLocalConfig: true,
     initialState: require('./appConfigEmbedded').default.initialState,
-    translations: 'https://data.whanganui.govt.nz/mapstore2-whanganuidc-test/translations'
+    translations: 'https://data.whanganui.govt.nz/mapstore2-whanganuidc/translations'
 });
 window.MapStore2 = MapStore2;
