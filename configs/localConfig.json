@@ -9,7 +9,9 @@
       "https://maps.whanganui.govt.nz",
       "https://mapstore.whanganui.govt.nz",
       "https://nominatim.openstreetmap.org",
-      "https://wpc-18425.local.wanganui.govt.nz"
+      "https://api.cesium.com",
+      "https://assets.cesium.com",
+      "https://basemaps.linz.govt.nz"
     ]
   },
   "geoStoreUrl": "rest/geostore/",
@@ -37,7 +39,7 @@
       "flyTo": true,
       "navigationTools": true,
       "terrainProvider": {
-        "type": "ellipsoid"
+        "type": "world"
       }
     }
   },
@@ -395,17 +397,6 @@
       "Details", {
         "name": "Map",
         "cfg": {
-          "additionalLayers": [{
-              "type": "wms",
-              "url": "https://data.whanganui.govt.nz/geoserver/wms",
-              "title": "elevation",
-              "name": "geonode:whanganui_8m_dem_2012_3857_16",
-              "format": "application/bil16",
-              "nodata": -9999,
-              "visibility": true,
-              "useForElevation": true
-            }
-          ],
           "mapOptions": {
             "openlayers": {
               "interactions": {
