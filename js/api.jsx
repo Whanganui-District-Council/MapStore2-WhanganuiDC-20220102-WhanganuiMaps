@@ -16,6 +16,6 @@ const MapStore2 = require('../MapStore2/web/client/jsapi/MapStore2').default.wit
     },
     noLocalConfig: true,
     initialState: require('./appConfigEmbedded').default.initialState,
-    translations: 'https://data.whanganui.govt.nz/mapstore2-whanganuidc/translations'
+    translations: 'https://data.whanganui.govt.nz/mapstore2-whanganuidc/MapStore2/web/client/translations'
 });
 window.MapStore2 = MapStore2;
